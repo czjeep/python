@@ -13,8 +13,12 @@ def get_char(r,g,b,alpha=255):
 	v = int(maxV*p)
 	return ascii_char[v]
 
+def get_path():
+	import os
+	return os.path.dirname(__file__)
+
 if __name__ == '__main__':
-		img = '/Users/singerdream/workspace/python/dingdangmao.jpg'	
+		img = get_path() + 'dingdangmao.jpg'	
 		im = Image.open(img)
 		im = im.resize((WIDTH,HEIGHT),Image.NEAREST)
 		txt = ""
@@ -24,5 +28,6 @@ if __name__ == '__main__':
 			txt += '\n'
 		print(txt)
 
-		with open("/Users/singerdream/workspace/python/dingdangmao.txt",'w') as f:
+		file_path = get_path() + 'dingdangmao.txt'
+		with open(file_path,'w') as f:
 			f.write(txt)
